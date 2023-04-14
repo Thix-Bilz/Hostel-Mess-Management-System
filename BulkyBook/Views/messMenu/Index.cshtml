@@ -1,0 +1,89 @@
+﻿@model IEnumerable<messMenu>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br /><br /><br /><br />
+            <section class="section center-section">
+      <div class="row">
+          <div class="col-lg-1"></div>
+    <div class="col-lg-4"><img src="/assets/img/messMenu.png" width="750" height="600"></div>
+    <div class="col-lg-7">
+        <br /><br />
+<div class="container p-3 w-75">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Menu List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="messMenu" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i>&nbsp; Create New Category
+            </a>
+        </div>
+    </div>
+    <br /><br />
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Day
+            </th>
+            <th>
+                Breakfast
+            </th>
+            <th>
+                Breakfast Price
+            </th>
+            <th>
+                Lunch
+            </th>
+            <th>
+                Lunch Price
+            </th>
+            <th>
+                Dinner
+            </th>
+            <th>
+                Dinner Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+       {
+           <tr>
+               <td width="10%">
+                   @obj.Day
+               </td>
+               <td width="10%">
+                   @obj.Breakfast
+               </td>
+               <td width="10%">
+                   @obj.BreakFastPrice
+               </td>
+               <td width="5%">
+                   @obj.Lunch
+               </td>
+               <td width="10%">
+                   @obj.LunchPrice
+               </td>
+               <td width="10%">
+                   @obj.Dinner
+               </td>
+               <td width="10%">
+                   @obj.DinnerPrice
+               </td>
+               <td width="10%">
+                   <div class="w-75 btn-group" role="group">
+                       <a asp-controller="messMenu" asp-action="Edit" asp-route-id="@obj.MessMenuId"
+                       class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>&nbsp; Edit</a>
+                       <a asp-controller="messMenu" asp-action="Delete" asp-route-id="@obj.MessMenuId"
+                       class="btn btn-danger mx-2"><i class="bi bi-trash-fill"></i>&nbsp; Delete</a>
+                   </div>
+               </td>
+           </tr>
+       }
+    </tbody>
+</table>
+</div></div></div></section>

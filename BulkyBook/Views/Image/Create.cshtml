@@ -1,0 +1,37 @@
+﻿@model BulkyBookWeb.Models.ImageModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form asp-action="Create" enctype="multipart/form-data">
+
+    <br /><br /><br /><br />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Upload Photo</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-5">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="mb-5">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+            <a asp-controller="Image" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+            </a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

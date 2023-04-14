@@ -1,0 +1,169 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+@*@{
+
+    IdentityUser user = await UserManager.FindByNameAsync(User.Identity.Name);
+    var roles = await UserManager.GetRolesAsync(user);
+    string s=roles.FirstOrDefault();
+
+   
+}*@
+
+@if (SignInManager.IsSignedIn(User))
+{
+    
+<!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">PAFIAST Hostel & Mess</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+            <li><a a class="nav-link scrollto" asp-controller="Configuration" asp-action="AdminConfiguration"><span>Settings</span></a>
+                
+            </li>
+          <li><a class="nav-link scrollto" asp-controller="Home" asp-action="Index">Home</a></li>
+          
+          <li class="dropdown"><a href="#"><span>Hostel</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li class="dropdown"><a href="#"><span>Hostel Mess Rule</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link" asp-controller="HostelMessRule" asp-action="Details">Details</a></li>
+              <li><a class="nav-link" asp-controller="HostelMessRule" asp-action="Create">Create</a></li>
+            </ul>
+          </li>
+              <li class="dropdown"><a href="#"><span>Hostel Namaz Timing</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link" asp-controller="NamazTiming" asp-action="Details">Details</a></li>
+              <li><a class="nav-link" asp-controller="NamazTiming" asp-action="Create">Create</a></li>
+            </ul>
+          </li>
+              <li class="dropdown"><a href="#"><span>Hostelite Data</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link" asp-controller="HosteliteData" asp-action="Details">Details</a></li>
+              <li><a class="nav-link" asp-controller="HosteliteData" asp-action="Create">Create</a></li>
+            </ul>
+          </li>
+              <li><a class="nav-link scrollto" asp-controller="Image" asp-action="Index">Image Upload</a></li>
+            </ul>
+          </li>
+          <!---->
+          <li class="dropdown"><a href="#"><span>Mess</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+                        <li class="dropdown"><a href="#"><span>Mess Menu </span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link" asp-controller="messMenu" asp-action="Details">Details</a></li>
+              <li><a class="nav-link" id="CreateMessMenu" href="messMenu/Create">Create</a></li>
+            </ul>
+          </li>
+          
+        <li class="dropdown"><a href="#"><span>Attendance </span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class="nav-link" asp-controller="Attendance" asp-action="Details">Details</a></li>
+              <li><a class="nav-link" href="Attendance/Create" id="CreateAttendance">Create</a></li>
+              <li><a class="nav-link" href="Administeration/SetAttendanceTime" id="SetAttendanceTime">Set Attendance Time</a></li>
+              <li><a class="nav-link" asp-controller="Attendance" asp-action="Delete">Delete</a></li>
+            </ul>
+          </li>
+            </ul>
+          </li>
+          <!---->
+
+          <!---->
+          
+
+          <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="~/image/bilal210443209.jpg" alt="Profile" width="50px" height="50px" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">Bilal Aurangzeb Khan</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <li class="nav-item"><a id="manage" class="nav-link text-black" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a></li>
+           
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="nav-link" id="12" href="Profile/HosteliteProfile">
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+@*            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>*@
+            
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+            
+          </ul><!-- End Profile Dropdown Items -->
+        </li>
+        </ul>
+          <ul>
+          @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="getstarted scrollto">Logout</button>
+            </form>
+        }
+        else
+        {
+            <li>You have successfully logged out of the application.</li>
+        }
+    }
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+    
+    
+
+    
+    </nav><!-- .navbar -->
+    
+    </div>
+  </header><!-- End Header -->
+  
+}
+else
+{
+    <ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link text-white" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-white" id="login" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li></ul>
+}
+ <div id="setModel">
+
+ </div>
+ 
+ 

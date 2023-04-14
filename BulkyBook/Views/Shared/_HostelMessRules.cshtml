@@ -1,0 +1,46 @@
+﻿@model HostelMessRule
+
+<form asp-controller="HostelMessRule" asp-action="Create" method="post">
+    <div class="card">
+    <div class="card-header">
+     <h4 class="card-title">Hostel mess rules</h4>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label asp-for="singleRule">Create Rule</label>
+            <input asp-for="singleRule" class="form-control"/>
+            <span asp-validation-for="singleRule" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AttendanceStartDateTime">Attendance StartDate Time</label>
+            <input id="startdatetimepicker" asp-for="AttendanceStartDateTime" class="form-control"/>
+            <span asp-validation-for="AttendanceStartDateTime" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="AttendanceEndDateTime">Attendance EndDate Time</label>
+            <input id="enddatetimepicker" asp-for="AttendanceEndDateTime" class="form-control"/>
+            <span asp-validation-for="AttendanceEndDateTime" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+    </div>
+</div>
+        
+        
+        @*<div asp-validation-summary="All"></div>*@
+        
+        
+
+        
+        
+
+</form>
+
+@section Scripts {
+   
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

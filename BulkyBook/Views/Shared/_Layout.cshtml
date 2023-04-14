@@ -1,0 +1,234 @@
+﻿@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] PAFIAST Hostel & Mess</title>
+          <!-- Favicons -->
+      <link href="~/assets/img/PAFIAST.png" rel="icon">
+      <link href="~/assets/img/PAFIAST.png" rel="apple-touch-icon">
+
+      <!-- Google Fonts -->
+      <link href="https://fonts.gstatic.com" rel="preconnect">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+      <!-- Vendor CSS Files -->
+      <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+      <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+      <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+      <link href="~/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+      <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+      <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+      <link  rel="stylesheet" type="text/css" href="~/lib/jquery/datetimepicker-master/build/jquery.datetimepicker.min.css" />
+      <!-- Template Main CSS File -->
+      <link href="~/assets/css/style.css" rel="stylesheet">
+      <script src="assets/vendor/purecounter/purecounter.js"></script>
+      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+      <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+      <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+      <script src="assets/vendor/php-email-form/validate.js"></script>
+      <script src="/lib/jquery/jquery-3.4.1.min.js"></script>
+      <script src="/lib/jquery/datetimepicker-master/jquery.datetimepicker.js"></script>
+      <script src="/lib/jquery/datetimepicker-master/jquery.js"></script>
+      <script src="/lib/jquery/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+       
+       <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+       
+       <script src="~/js/moment-with-locales.js"></script>
+       
+
+
+      <!-- Template Main JS File -->
+      <script src="assets/js/main.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      @*<script src="~/lib/jquery/jquery-3.4.4.min.js"></script>*@
+       <script type="text/javascript" lang="javascript">
+      $(document).ready(function() {
+         
+         $(window).on("load",function(){
+   start();
+   });
+   function refresher() {
+     $.ajax({method:'get',url:"Attendance/CheckAttendanceTime"}); 
+      }
+   var timerID; 
+function start() {
+    
+timerID = setInterval(refresher,30000);
+}
+    
+
+    });   
+      </script>
+     <script type="text/javascript" lang="javascript">
+         jQuery(document).ready(function(){
+            jQuery('#CreateMessMenu').on('click',function(e){
+            e.preventDefault();
+            var url=$(this).attr('href');
+            alert(url);
+            jQuery.ajax({
+            method:'get',
+            url:url,
+          contentType:'application/json;charset=utf-8',
+         success:function(result)
+         {
+             console.log(result);
+             jQuery('#setModel').html(result);
+             jQuery('#MessMenuRecord').modal('show');
+         }
+            });
+            });
+            });
+         </script>
+   <script type="text/javascript" lang="javascript">
+        $(document).ready(function()
+        {
+        $('#CreateAttendance').click(function(e){
+            e.preventDefault();
+         var url="Attendance/CheckAttendanceTime";
+            jQuery.ajax({
+                method:"get",
+                url:url,
+                contentType:"application/json;charset=utf-8",
+                dataType:'json',
+                success:function(result)
+                {
+              
+                    let startdatetime=result.attendanceStartDateTime;
+                    let enddatetime=result.attendanceEndDateTime;
+                    let today=new Date();//Date Time
+                    var sdate=new Date(startdatetime);
+                    var edate=new Date(enddatetime);
+                    console.log(result);
+                    let t=today.getHours();
+                    let s=sdate.getHours();
+                    let e=edate.getHours();
+                    //let sdatetime=new Date(startdatetime);
+                    //let edatetime=new Date(enddatetime);
+                   // var options={hour:'numeric',minute:'numeric',hour12:true}
+                   // var edate
+                   //Date.prototype.between=function(a,b)
+                   //{
+                   //    const dates=[];
+                   //    dates.push(new Date(a));
+                   //    dates.push(new Date(b));
+                   //    const maxDate=new Date(Math.max.apply(this,dates));
+                   //    const minDate=new Date(Math.min.apply(this,dates));
+                   //    return this>=minDate && this<maxDate;
+                   //}
+                   //console.log(sdatetime.getHours());
+                   //console.log(edatetime.getHours());
+                   //console.log(today.getHours());
+                   //console.log(today.getTime()>=sdatetime.getTime()&&today.getTime()<edatetime.getTime());
+                    //let startdate=new Date(startdatetime);
+                    //let enddate=new Date(enddatetime);
+                    //alert(today+' '+startdate+' '+enddate);
+                    //let shours=startdate.getHours();
+                    //let ehours=enddate.getHours();
+                    //
+                    //let hours=today.getHours();
+                    //alert(shours);
+                    //alert(ehours);
+                    //alert(hours);
+                    //let s=shours.toString();
+                    //let e=ehours.toString()
+                    //let startinghours=moment(s,'hh').format('hh');
+                    //let endinghours=moment(e,'hh').format('hh');
+                    //let todayhours=moment(hours.toString(),'hh').format('hh');
+                    //let sampm=moment(startdate.getTime().toString(),'a').format('a');
+                    //let eampm=moment(enddate.getTime().toString(),'a').format('a');
+                    //let tampm=moment(today.getTime().toString(),'a').format('a');
+                    //alert(sampm+' '+eampm+' '+tampm);
+                    //let shours=sdatetime.getHours();
+                    //let ehours=edatetime.getHours();
+                    //let thours=today.getHours();
+                    //alert(shours+' '+ehours);
+                if(t>=s&&t<e)
+                {
+                    //$.ajax({type:"get",url:"@Url.Action("Details","Attendance")",contentType:"application/json; charset=utf-8"});
+                    window.location.href="Attendance/Create";   
+                }
+           
+                else
+                {
+                    console.log('NO');
+                    alert('No');
+                   $('#AttendanceTimeOut').modal('show');
+                }
+              }
+            });
+        });
+        });    
+</script>
+<script type="text/javascript" lang="javascript">
+     $(document).ready(function()
+    {
+        
+       jQuery('#12').on('click',function(e){
+           e.preventDefault();
+           var URL=$(this).attr('href');
+           jQuery('#12').remove();
+       console.log('hosteliteprofile');
+    jQuery.ajax({method:"get",url:URL,contentType:"application/json;charset=utf-8",datatype:"json",success:function(result){
+    jQuery("#setModel").empty();
+    jQuery("#setModel").html(result);
+    jQuery('#HosteliteRecord').modal('show');
+}
+        });
+
+    });});
+        
+        </script>
+</head>
+
+<body>
+    
+      <div class="modal fade" id="AttendanceTimeOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Over Time</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+           Time Is Out            
+           </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+                
+
+        @*<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">dropdown</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">action</a>
+            <a class="dropdown-item" href="#">another action</a>
+            <a class="dropdown-item" href="#">something else here</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">separated link</a>
+          </div>
+        </li>*@
+      
+      <partial name="_LoginPartial.cshtml" />
+    
+    
+        
+            <partial name="_Notification" />
+            @RenderBody()
+        
+
+
+ <!-- Vendor JS Files -->
+    @await RenderSectionAsync("scripts", required:false)
+    
+</body>
+</html>

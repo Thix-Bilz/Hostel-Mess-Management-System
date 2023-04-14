@@ -1,0 +1,134 @@
+﻿@model Attendance;
+@{
+    int i=0;
+}
+            <br /><br /><br />
+    <section class="section center-section">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5"><img src="/assets/img/Attendance.png" width="750" height="750"></div>
+            <div class="col-lg-6">
+<form method="post">
+    <br /><br /><br />
+    <div class="border p-3 mt-4 w-75">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Attendance</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        
+                        <div class="mb-3">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+                    
+                    
+
+        <div class="mb-3">
+            <label asp-for="BreakFast"></label>
+            <select asp-for="BreakFast" class="form-control" asp-items="Html.GetEnumSelectList<BreakFast>()"></select>
+            <span asp-validation-for="BreakFast" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Lunch"></label>
+            <select asp-for="Lunch" class="form-control" asp-items="Html.GetEnumSelectList<Lunch>()">
+
+            </select>
+            <span asp-validation-for="Lunch" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Dinner"></label>
+            <select asp-for="Dinner" class="form-control" asp-items="Html.GetEnumSelectList<Dinner>()" id="Lunch"></select>
+            <span asp-validation-for="Dinner" class="text-danger"></span>
+        </div>
+        
+        @foreach(var ad in Model.AttendanceDetails)
+         {
+                List<PropertyInfo> propertyInfos=ad.GetType().GetProperty("HostelitemessMenu").PropertyType.GetProperties().Where(p=>p.GetValue(ad.HostelitemessMenu)!=null&&(p.Name.Equals("Day")||p.Name.Equals("Breakfast")||p.Name.Equals("Lunch")||p.Name.Equals("Dinner"))).ToList();
+       <table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>  
+            </th>
+            @foreach(var pi in propertyInfos)
+            {
+            <th>
+                @pi.Name
+            </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+           <tr>
+               <td>
+         <input type="hidden" asp-for="@Model.AttendanceDetails[i].messMenuId" class="form-control">
+               </td>
+               @foreach(var pi in propertyInfos)
+                                    {
+                                        <td>
+                                            @pi.GetValue(ad.HostelitemessMenu)
+                                        </td>
+                                    }
+           </tr>
+    </tbody>
+                        </table>
+                        i++;
+                    }
+
+                        
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="Attendance" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+</form>
+</div></div></section>
+@section Scripts {
+    @*<script type="text/javascript" lang="javaScript">
+    $(document).ready(function(){
+        $(window).on('load',function(){
+            $.ajax({
+            method:"get",
+            url:"CheckAttendanceTime",
+            contentType:"application/json;charset=utf-8",
+            dataType:'json',
+            success:function(result)
+            {
+                let startdatetime=result.attendanceStartDateTime;
+                let enddatetime=result.attendanceEndDateTime;
+                let sdatetime=new Date(startdatetime);
+                let edatetime=new Date(enddatetime);
+                let sh=sdatetime.getHours();
+                let eh=edatetime.getHours();
+                if(sh==16&&eh==23)
+                {
+                    //$("#Lunch option[value='0']").removeAttr('selected');
+                    //$("#Lunch option:nth-child(2)").attr('selected','selected');
+                    $("#Lunch").attr("disabled",true);
+
+                }
+
+            }
+            
+            });
+
+
+        });
+
+    });  
+   
+    </script>*@
+   @*<script type="text/javascript" lang="javaScript">
+       jQuery(function ($) {        
+  $('form').bind('submit', function () {
+    $(this).find('#Lunch').prop('disabled', false);
+  });
+});
+   </script>*@
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

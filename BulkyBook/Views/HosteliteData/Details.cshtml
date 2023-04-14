@@ -1,0 +1,77 @@
+﻿@model IEnumerable<HosteliteData>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br /><br /><br /><br />
+            <section class="section center-section">
+      <div class="row">
+          <div class="col-lg-1"></div>
+    <div class="col-lg-4"><img src="/assets/img/HosteliteData.png" width="750" height="600"></div>
+    <div class="col-lg-6">
+        <br /><br /><br /><br /><br />
+<div class="container p-3 w-75">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Hostelite Data</h2>
+        </div>
+    </div>
+    <br /><br />
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Full Name
+            </th>
+            <th>
+                Room Number
+            </th>
+            <th>
+                Email Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Department
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Password
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+       {
+           <tr>
+               <td>
+                   @obj.Name
+               </td>
+               <td>
+                   @obj.RoomNumber
+               </td>
+               <td>
+                   @obj.User.Email
+               </td>
+               <td>
+                   @obj.User.PhoneNumber
+               </td>
+               <td>
+                   @obj.Department
+               </td>
+               <td>
+                   @obj.City
+               </td>
+               <td>
+                   @obj.User.PasswordHash
+               </td>
+           </tr>
+       }
+    </tbody>
+</table>
+</div></div></div>
+</section>

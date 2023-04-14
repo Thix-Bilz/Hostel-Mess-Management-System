@@ -1,0 +1,27 @@
+﻿@using BulkyBookWeb.Models;
+@model IEnumerable<ImageModel>
+@{
+
+}
+
+@foreach (ImageModel img in Model)
+    {
+<div class="col-xl-4">
+
+          <div class="card">
+            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+              <img src="@("~/image/"+img.ImageName)" asp-append-version="true" alt="Profile" class="rounded-circle"><br />
+              <h3></h3>
+              <h2>@img.Title</h2>
+              
+                  <a class="nav-link " asp-controller="Image" asp-action="Edit" asp-route-id="@img.ImageId" >Edit Profile</a>
+                
+
+            </div>
+          </div>
+
+        </div>
+
+    }
+

@@ -1,0 +1,19 @@
+﻿@inject ApplicationDbContext applicationdbcontext;
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            @{await Html.RenderPartialAsync("_HostelMessRules",applicationdbcontext.HostelMessRules.FirstOrDefault());}
+        </div>
+        <div class="col-sm-6">
+          @{await Html.RenderPartialAsync("_MessMenuConfiguration",applicationdbcontext.messMenuConfigurations.ToList());} 
+        </div>
+        </div>
+         <div class="row">
+        <div class="col-sm-6">
+            @{await Html.RenderPartialAsync("_HostelMessRules",applicationdbcontext.HostelMessRules.FirstOrDefault());}
+        </div>
+        <div class="col-sm-6">
+          @{await Html.RenderPartialAsync("_MessMenuConfiguration",applicationdbcontext.messMenuConfigurations.ToList());} 
+        </div>
+        </div>
+    </div>

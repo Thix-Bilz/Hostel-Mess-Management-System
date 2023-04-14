@@ -1,0 +1,47 @@
+﻿@model NamazTiming
+
+<form method="post">
+    <br /><br /><br /><br />
+
+            <section class="section center-section">
+      <div class="row">
+          <div class="col-lg-1"></div>
+    <div class="col-lg-5"><img src="/assets/img/mosque.svg" width="750" height="600"></div>
+    
+    <div class="col-lg-6">
+        <br /><br /><br /><br /><br />
+    <div class="border p-3 mt-4 w-75">
+        
+
+        <div class="row pb-2">
+            <h2 class="text-primary">Create Namaz timing</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        
+        <div class="mb-3">
+            <label asp-for="Namaz"></label>
+            <input asp-for="Namaz" class="form-control"/>
+            <span asp-validation-for="Namaz" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Namaztiming"></label>
+            <input asp-for="Namaztiming" class="form-control"/>
+            <span asp-validation-for="Namaztiming" class="text-danger"></span>
+        </div>
+        </div><br />
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="NamazTiming" asp-action="Index" class="btn btn-secondary" style="width:150px">
+            Back to list
+        </a>
+    </div>
+    </div>
+</section>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

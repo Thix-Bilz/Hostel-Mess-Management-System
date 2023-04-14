@@ -1,0 +1,129 @@
+﻿@model HosteliteData;
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ @* <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Users / Profile</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="~/assets1/img/favicon.png" rel="icon">
+  <link href="~/assets1/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">*@
+
+  <!-- Vendor CSS Files -->
+  @*<link href="~/assets1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="~/assets1/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="~/assets1/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="~/assets1/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="~/assets1/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="~/assets1/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="~/assets1/vendor/simple-datatables/style.css" rel="stylesheet">*@
+
+  <!-- Template Main CSS File -->
+  <link href="~/assets1/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <form method="post">
+    <table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Phone No
+            </th>
+            <th>
+                Department
+            </th>
+            <th>
+                Room No
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Email
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        
+           <tr>
+               <td>
+                   @Model.Name
+               </td>
+               
+               <td>
+                   @Model.User.PhoneNumber
+               </td>
+               <td>
+                   @Model.Department
+               </td>
+               <td>
+                   @Model.RoomNumber
+               </td>
+               <td>
+                   @Model.Country
+               </td>
+               <td>
+                   @Model.City
+               </td>
+               <td>
+                   @Model.User.Email
+               </td>
+               
+           </tr>
+       
+    </tbody>
+    </table>
+    @*<form method="post">
+       <div class="form-check m-1">
+                    <input type="hidden" asp-for="" />
+                    <input type="hidden" asp-for="@Model[i].UserName" />
+                    <input asp-for="@Model[i].IsSelected" class="form-check-input" />
+                    <label class="form-check-label" asp-for="@Model[i].IsSelected">
+                  
+                    </label>
+                </div>
+    </form>*@
+    @*<br /><br /><br /><br /><br />
+      <main class="main">
+    <section class="section profile">
+      <div class="row">
+          @{
+              await Html.RenderPartialAsync("~/Views/Shared/_Images.cshtml",new ModelsHelper().GetImages());    
+            await Html.RenderPartialAsync("~/Views/Shared/_Hostelite.cshtml",new ModelsHelper().GetHosteliteDatas());
+            }
+      </divInstall-Package Microsoft.AspNetCore.App.Runtime.win-x64 -Version 3.1.0
+      </section>
+      </main>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>*@
+
+  <!-- Vendor JS Files -->
+  @*<script src="~/assets1/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="~/assets1/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/assets1/vendor/chart.js/chart.min.js"></script>
+  <script src="~/assets1/vendor/echarts/echarts.min.js"></script>
+  <script src="~/assets1/vendor/quill/quill.min.js"></script>
+  <script src="~/assets1/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="~/assets1/vendor/tinymce/tinymce.min.js"></script>
+  <script src="~/assets1/vendor/php-email-form/validate.js"></script>*@
+
+  <!-- Template Main JS File -->
+  @*<script src="~/assets1/js/main.js"></script>*@
+ </form>
+</body>
+
+</html>

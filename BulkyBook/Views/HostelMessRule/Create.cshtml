@@ -1,0 +1,47 @@
+﻿@model HostelMessRule
+
+<form method="post">
+    <br /><br /><br /><br />
+    <section class="section center-section">
+        <div class="row">
+            <div class="col-lg-5"><img src="/assets/img/rule.png" width="750" height="750"></div>
+            <div class="col-lg-6">
+                <div class="border p-3 mt-4 w-75">
+        <div class="row pb-2">
+            <h2 class="text-primary">Create hostel mess rules</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+            <label asp-for="singleRule">Create Rule</label>
+            <input asp-for="singleRule" class="form-control"/>
+            <span asp-validation-for="singleRule" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="AttendanceStartDateTime">Attendance StartDate Time</label>
+            <input id="startdatetimepicker" asp-for="AttendanceStartDateTime" class="form-control"/>
+            <span asp-validation-for="AttendanceStartDateTime" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="AttendanceEndDateTime">Attendance EndDate Time</label>
+            <input id="enddatetimepicker" asp-for="AttendanceEndDateTime" class="form-control"/>
+            <span asp-validation-for="AttendanceEndDateTime" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Create</button>
+        <a asp-controller="HostelMessRule" asp-action="Index" class="btn btn-primary cta-btn" style="width:150px">
+            Back to list
+        </a>
+    </div>
+    </div>
+    </div>
+    </section>
+</form>
+
+@section Scripts {
+   
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}

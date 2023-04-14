@@ -1,0 +1,53 @@
+﻿@model HosteliteData
+@inject ApplicationDbContext applicationdbcontext;
+@inject UserManager<IdentityUser> userManager;
+@{
+
+    string Id = userManager.GetUserId(User);
+    HosteliteData hostelitedata=applicationdbcontext.HosteliteDatas.Where(hd => hd.userid.Equals(Id)).FirstOrDefault();
+    ImageModel imageModel=applicationdbcontext.Images.Where(img => img.hosteliteId.Equals(hostelitedata.Id)).FirstOrDefault();
+   
+}
+<div class="modal fade" id="HosteliteRecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="@imageModel.ImageUrl" alt="Profile" width="100px" height="100px" class="float-start">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <table>     
+       <tbody>
+       <tr> 
+           <td>
+       <label class="form-lable text-bold">Name</label>
+       <label class="form-lable">@hostelitedata.Name</label>
+       </td>
+       <td>
+           <label class="form-lable text-bold">Department</label>
+       <label class="form-control">@hostelitedata.Department</label>
+       </td>
+       <td>
+           <label class="form-lable text-bold">RoomNumber</label>
+       <label class="form-lable">@hostelitedata.RoomNumber</label>
+       </td>
+       <td>
+       <label class="form-lable text-bold">City</label>
+       <label class="form-control">@hostelitedata.City</label>
+       </td>
+       <td>
+           <label class="form-lable text-bold">Country</label>
+       <label class="form-lable">@hostelitedata.Country</label>
+       </td>
+        </tr>
+        </tbody>
+       </table>
+           </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

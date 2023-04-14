@@ -1,0 +1,64 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+    @*Layout = "~/Areas/Identity/Pages/_AuthLayout.cshtml";*@
+}
+
+
+<link rel="stylesheet" href="~/assets/css/style.css">
+<section class="d-flex align-items-center">
+    <div class="container mt-5 mb-5">
+        <div class="d-flex flex row g-0">
+            <div class="col-md-6 mt-3">
+                <div class="card card1 p-3">
+                    <div class="card-title text-center pb-0 fs-4">
+                        <h2><string>Create an Account</string></h2>
+                    </div>
+
+                    <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="row g-3 needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div><br />
+                        <div class="input-field d-flex flex-column mt-3">
+                            <label asp-for="Input.UserName" class="form-label"><strong>UserName</strong></label>
+                            <input asp-for="Input.UserName" class="form-control" /> 
+                            <span asp-validation-for="Input.UserName" class="text-danger"></span><br />
+
+                            <label asp-for="Input.Email" class="form-label"><strong>Email</strong></label>
+                            <input asp-for="Input.Email" class="form-control" placeholder="email@example.com"> 
+                            <span asp-validation-for="Input.Email" class="text-danger"></span><br />
+    
+                            <label asp-for="Input.Password" class="form-label"><strong>Password</strong></label>
+                            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Enter Your Password" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span><br />
+    
+                            <label asp-for="Input.ConfirmPassword" class="form-label"><strong>Confirm Password</strong></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+        
+                            <div class="col-12">
+                                <button id="registerSubmit" type="submit" class="mt-4 btn btn-dark d-flex justify-content-center align-items-center">Create Account</button>
+                            </div>
+    
+                           <div class="mt-6 text1"><br />
+                               <span class="mt-3 forget">Already have an account?</span> 
+                               <a  asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl"> Log in</a> 
+                           </div>
+                           </div>
+                           </form>
+                           </div>
+                           </div>
+
+                    <div class="col-md-6 mt-3">
+                        <div class="card card2 p-3">
+                            <div class="image"> <img src="~/assets/img/login.jpg" height="300" width="600"> </div>
+                        </div>
+                    </div>
+        </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

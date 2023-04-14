@@ -1,0 +1,60 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+    
+}
+
+<link rel="stylesheet" href="~/assets/css/style.css">
+
+<section class="d-flex align-items-center">
+
+    <div class="container mt-5 mb-5">
+        <div class="d-flex flex row g-0">
+            <div class="col-md-6 mt-3">
+                <div class="card card1 p-3">
+                    <div class="card-title text-center pb-0 fs-4">
+                        <h1><string>Login</string></h1>
+                    </div>
+                    <form id="account" method="post" class="row g-3 needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div><br />
+    
+                        <div class="input-field d-flex flex-column mt-3">
+                      
+                          <label asp-for="Input.Email" class="form-label"><strong>Email</strong></label>
+                          <input asp-for="Input.Email" class="form-control" placeholder="email@example.com"> 
+                          <span asp-validation-for="Input.Email" class="text-danger"></span><br />
+                      
+                            <label asp-for="Input.Password" class="form-label"><strong>Password</strong></label>
+                           <input asp-for="Input.Password" class="form-control" placeholder="Enter Your Password"> 
+                            <span asp-validation-for="Input.Password" class="text-danger"></span><br />
+                        
+                            <div class="checkbox col-12">
+                            <label asp-for="Input.RememberMe" class="form-label">
+                                <input class="form-check-input " asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+
+                           <button id="login-submit" type="submit" class="mt-4 btn btn-dark d-flex justify-content-center align-items-center">Login</button>
+                        
+                           <div class="mt-3 text1"> <span class="mt-3 forget">Forget Password?</span> <a id="forgot-password" asp-page="./ForgotPassword">Create new password.</a> </div>
+                            <div class="text2 mt-4 d-flex flex-row align-items-center"> <span>Don't have an account?<span class="register"> <a id="forgot-password" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a></span></span> </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 mt-3">
+                <div class="card card2 p-3">
+                    <div class="image"> <img src="~/assets/img/login.jpg" height="300" width="600"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

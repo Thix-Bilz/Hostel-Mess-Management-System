@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NamazTiming>
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br /><br /><br /><br />
+            <section class="section center-section">
+      <div class="row">
+          <div class="col-lg-1"></div>
+    <div class="col-lg-5"><img src="/assets/img/mosque.svg" width="750" height="600"></div>
+    
+    <div class="col-lg-6">
+        <br /><br /><br /><br /><br />
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Namaz Timing</h2>
+        </div>
+    </div>
+    <br /><br />
+
+<table class="table table-bordered table-striped" style="width:75%">
+    <thead>
+        <tr>
+            <th style="width:25%">
+                Namaz
+            </th>
+            <th style="width:25%">
+                Namaz Timing
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model)
+       {
+           <tr>
+               <td>
+                   @obj.Namaz
+               </td>
+               <td>
+                   @obj.Namaztiming
+               </td>
+           </tr>
+       }
+    </tbody>
+</table>
+</div>
+</div>
+</section>

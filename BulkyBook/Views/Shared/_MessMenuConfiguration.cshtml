@@ -1,0 +1,52 @@
+﻿@model List<MessMenuConfiguration>
+<form asp-controller="Configuration" asp-action="ConfigureMessMenu" method="post">
+<div class="card">
+    <div class="card-header">
+    <h4 class="card-title" >Mess Menu Configuration</h4>
+    </div>
+    <div class="card-body">
+        <table>
+            <thead>
+                <tr>
+        <th><label class="d-inline m-3">Day</label></th>
+        <th><label class="d-inline m-1">BreakFast</label></th>
+        <th><label class="d-inline m-1">Lunch</label></th>
+        <th><label class="d-inline m-1">Dinner</label></th>
+        </tr>
+        </thead>
+       @for(int i=0;i<Model.Count;i++)
+       {
+       <tbody>
+       <tr> 
+           <td>
+       <label class="form-control" asp-for="@Model[i].Day" type="hidden">@Model[i].Day</label>
+       </td>
+       <td>
+       <select class="form-control" asp-for="@Model[i].Breakfast" asp-items="@Html.GetEnumSelectList<BreakFast>()"></select>
+       </td>
+       <td>
+       <select class="form-control" asp-for="@Model[i].Lunch" asp-items="@Html.GetEnumSelectList<Lunch>()"></select>
+       </td>
+        <td>
+        <select class="form-control" asp-for="@Model[i].Breakfast" asp-items="@Html.GetEnumSelectList<Dinner>()"></select>
+        </td> 
+        
+        <td> <input class="form-check-input" asp-for="@Model[i].Id"  type="hidden" /></td>
+      
+      <td>
+       <input class="form-control" asp-for="@Model[i].DayOfWeek"  type="hidden" />
+       </td>
+       <td>
+       <input class="form-control" asp-for="@Model[i].DateTime"  type="hidden" />
+       </td>
+       
+        </tr>
+        </tbody>
+       }
+       </table>
+    
+    </div>
+    <div class="card-footer">
+    <button type="submit" class="btn btn-primary">OK</button>
+    </div>
+</form>

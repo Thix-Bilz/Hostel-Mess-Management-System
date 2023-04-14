@@ -1,0 +1,52 @@
+﻿@model IEnumerable<HostelMessRule>
+@{
+    
+}
+
+<br /><br /><br /><br /><br /><br />
+
+
+  <main id="main" class="main">
+      
+
+
+    <section class="section center-section">
+      <div class="row">
+          <div class="col-lg-5">
+              <img src="/assets/img/rule.png" width="750" height="750">
+          </div>
+          
+        <div class="col-lg-6">
+            <br><br><br><br><br><br><br>
+          <div class="card">
+            <div class="card-body"><br>
+                <h3 class="" style="text-align:center;"><b>Pak-Austria Fachhochschule:</b></h3>
+                            <h4 class="" text-align="center" style="text-align:center; color:rgb(10, 13, 15) ;"><b>Institute of Applied Sciences and Technology</b></h4><br>
+                                <h5 style="color:#6eb9ff; text-align:center; font-variant-position:super;"><b>Hostel & Mess Rules </b></h5>
+<br><br>
+              <!-- Default Accordion -->
+
+              <div class="accordion" id="accordionExample">
+                  <div class="accordion-item">
+                  @foreach(var obj in Model)
+                                        {
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <h6 style=" color:rgb(13, 14, 15) ;"> <i style="color:#cf4c35; font-size:larger;" class="bi bi-check2-circle"></i> @obj.singleRule</h6>
+                    </div>
+                  </div>
+                                        }
+                </div>
+               
+              </div><!-- End Default Accordion Example -->
+              
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+     

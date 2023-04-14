@@ -1,0 +1,47 @@
+﻿@model HostelMessRule
+<form method="post" asp-action="Edit">
+    <br /><br /><br /><br />
+        <section class="section center-section">
+        <div class="row">
+            <div class="col-lg-5"><img src="/assets/img/rule.png" width="750" height="750"></div>
+            <div class="col-lg-7">
+                <div class="border p-3 mt-4 w-75">
+        <div class="row pb-2">
+            <h2 class="text-primary">Edit Category</h2>
+            <hr />
+        </div>
+        @*<div asp-validation-summary="All"></div>*@
+        <div class="mb-3">
+         <input type="hidden" asp-for="id" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="singleRule">Edit Rule</label>
+            <input asp-for="singleRule" class="form-control"/>
+            <span asp-validation-for="singleRule" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="AttendanceStartDateTime">Start Date Time</label>
+            <input asp-for="AttendanceStartDateTime" class="form-control"/>
+            <span asp-validation-for="AttendanceStartDateTime" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="AttendanceEndDateTime">End Date Time</label>
+            <input asp-for="AttendanceEndDateTime" class="form-control"/>
+            <span asp-validation-for="AttendanceEndDateTime" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:150px">Update</button>
+        <a asp-controller="HostelMessRule" asp-action="Edit" class="btn btn-secondary" style="width:150px">
+            Back to rules
+        </a>
+    </div>
+    </div>
+    </div>
+    </section>
+</form>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
